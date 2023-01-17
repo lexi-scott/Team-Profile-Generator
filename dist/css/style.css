@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial';
+    margin: 0px;
+    background-color: beige;
+}
+
+header {
+    text-align: center;
+    background-color: darkgreen;
+    color: aliceblue;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2%;
+}
+
+.card {
+    flex: 1 0 200px;
+    padding: 20px;
+    text-align: center;
+    align-content: space-between;
+}
+
+.cardHeader {
+    padding: 20px;
+    background: #13293d;
+    color: #fff;
+}
+
+.cardInfo {
+    text-align: left;
+    font-size: 15px;
+}
+
+.cardInfo p {
+    border: 2px solid black;
+    margin: 0;
+    height: 35px;
+    background-color: whitesmoke;
+}

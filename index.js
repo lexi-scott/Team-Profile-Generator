@@ -6,6 +6,7 @@ const Intern = require('./lib/Intern');
 const fs = require('fs');
 
 let teamList = []
+let htmlCards = []
 
 function buildTeam() {
     inquirer
@@ -33,6 +34,8 @@ function buildTeam() {
             else if (data.first === "Finish") {
                 console.log("you are finished")
                 console.log(teamList)
+                generateHTML();
+                writeToFile("index.html", generateHTML())
             };
         });
 };
@@ -74,6 +77,7 @@ function addEngineer() {
         .then((data) => {
             engineer = new Engineer(data.name, data.id, data.email, data.role, data.github)
             teamList.push(engineer)
+            htmlCards.push(engineer.htmlCard())
             buildTeam();
         });
 }
@@ -116,6 +120,7 @@ function addIntern() {
         .then((data) => {
             intern = new Intern(data.name, data.id, data.email, data.role, data.school);
             teamList.push(intern);
+            htmlCards.push(intern.htmlCard())
             buildTeam();
         });
 }
@@ -157,11 +162,41 @@ function addManager() {
         .then((data) => {
             manager = new Manager(data.name, data.id, data.email, data.role, data.office);
             teamList.push(manager);
+            htmlCards.push(manager.htmlCard())
             buildTeam();
         });
 }
 
+function generateHTML() {
+    return `
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>My Team</title>
+      <link rel="stylesheet" href="./dist/css/style.css">
+    </head>
+    
+    <body>
+      <header>
+        <h1>My Team</h1>
+      </header>
+      <main class="flex-row justify-center">
+        ${(htmlCards.join(''))} 
+      </main>
+      </body>
+      </html>`
+}
+
+function writeToFile(filename, data) {
+    return fs.writeFileSync((filename), data)
+};
+
 buildTeam();
+
 
 
 
@@ -190,3 +225,5 @@ buildTeam();
 
 // have a function that creates each card
 // template literals  --> 
+
+//${for (var i = 0; i < htmlCards.length; i++){return (htmlCards[i])}}
