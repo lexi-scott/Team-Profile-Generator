@@ -1,13 +1,12 @@
 const inquirer = require('inquirer')
-const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const fs = require('fs');
-
+//empty arrays to collect objects from inquirer
 let teamList = []
 let htmlCards = []
-
+//buildTeam functions launches program
 function buildTeam() {
     inquirer
         .prompt([
@@ -35,11 +34,11 @@ function buildTeam() {
                 console.log("you are finished")
                 console.log(teamList)
                 generateHTML();
-                writeToFile("index.html", generateHTML())
+                writeToFile("./dist/index.html", generateHTML())
             };
         });
 };
-
+//function called when user selects add engineer
 function addEngineer() {
     inquirer
         .prompt([
@@ -81,7 +80,7 @@ function addEngineer() {
             buildTeam();
         });
 }
-
+//function called when user selects add intern
 function addIntern() {
     inquirer
         .prompt([
@@ -124,7 +123,7 @@ function addIntern() {
             buildTeam();
         });
 }
-
+//function called when user selects add manager
 function addManager() {
     inquirer
         .prompt([
@@ -166,7 +165,7 @@ function addManager() {
             buildTeam();
         });
 }
-
+//generate html function called when user selects finish
 function generateHTML() {
     return `
     <!DOCTYPE html>
@@ -177,7 +176,7 @@ function generateHTML() {
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>My Team</title>
-      <link rel="stylesheet" href="./dist/css/style.css">
+      <link rel="stylesheet" href="./css/style.css">
     </head>
     
     <body>
@@ -190,40 +189,9 @@ function generateHTML() {
       </body>
       </html>`
 }
-
+//function to write html of finished team
 function writeToFile(filename, data) {
     return fs.writeFileSync((filename), data)
 };
 
-buildTeam();
-
-
-
-
-//one function to ask user what do you want to do? intern, engineer, manager or finished. use .then to handle the answer, depending on answer run another function
-
-//then run manager function, intern function, engineer function or finished function.
-
-//addManager, addIntern, addEngineer, finished, introQuestion
-
-// const data = [ Manager, Engineer, Intern ] --> [ { name: "tom"}, {name: }, {}]
-
-// Create a new CARD for each DATA OBJECT (EMPLOYEE)
-// for loop to loop through each OBJECT
-// function createManagerCard
-// function createEngineerCard
-
-//const htmlCards = []
-
-
-// Then where does the new card go(?)
-
-
-// generateIndexFile() function -->
-
-// template literals  --> `# ${}    `
-
-// have a function that creates each card
-// template literals  --> 
-
-//${for (var i = 0; i < htmlCards.length; i++){return (htmlCards[i])}}
+buildTeam(); 
