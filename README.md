@@ -8,7 +8,7 @@
 
   ## Table of Contents
   * [Installation](#installation)
-  * [License] * [License](#license)
+  * [License](#license)
   * [Usage](#usage)
   * [Constributing](#constributing)
   * [Tests](#tests)
@@ -20,11 +20,12 @@
 
    ## Usage
 
-   Make sure to install dependencies. 
+   Make sure to install dependencies.
+   [Lexi Scott Module 10.webm](https://user-images.githubusercontent.com/111103755/213802597-afe6f639-1518-4f90-8abd-4d677842d70b.webm)
+ 
    
-
-   ## License
-
+  
+  
    ## License
       This project is licensed under the MIT license.
 
